@@ -1,0 +1,167 @@
+package empcalculation;
+import java.util.Scanner;
+class Employee1 {
+    String Emp_name,designation,Address,Mail_id;
+    int Emp_id;
+    long Mobile_no;
+    double bp,da,hra,gp,pf,sc,np;
+    public void input(){
+        Scanner in=new Scanner(System.in);
+        System.out.println("Enter Employee Name:");
+        Emp_name=in.nextLine();
+        System.out.println("Enter Employee id:");
+        Emp_id=in.nextInt();
+        System.out.println("Enter Address:");
+        Address=in.next();
+        System.out.println("Enter Mail id:");
+        Mail_id=in.next();
+        System.out.println("Enter Mobile number:");
+        Mobile_no=in.nextLong();
+       
+       
+    }
+
+    public void display(){
+        System.out.println("Employee Name:"+Emp_name);
+        System.out.println("Employee Id:"+Emp_id);
+        System.out.println("Employee Address:"+Address);
+        System.out.println("Employee Mail id"+Mail_id);
+        System.out.println("Employee Mobile Number:"+Mobile_no);
+        System.out.println("Employee Designation:"+designation);
+        System.out.println("Basic Pay:"+bp);
+        System.out.println("DA:"+da);
+        System.out.println("HRA:"+hra);
+        System.out.println("PF:"+pf);
+        System.out.println("Staff club fund:"+sc);
+        System.out.println("Gross pay:"+gp);
+        System.out.println("Net Salary:"+np);
+       
+    }
+
+       
+}    
+
+class programmer extends Employee1{
+    programmer(){
+        designation="programmer";
+       
+    }
+    public void programmersalary(){
+        da = bp * 0.97;
+        hra = bp * 0.10;
+        gp = bp + da + hra;
+        pf = bp * 0.12;
+        sc = bp * 0.01;
+        np = gp - pf - sc;
+       
+    }
+}
+class Assistant extends Employee1{
+    Assistant(){
+        designation="Assistant professor";
+       
+    }
+    public void Assistantsalary(){
+        da = bp * 1.10;
+        hra = bp * 0.20;
+        gp = bp + da + hra;
+        pf = bp * 0.12;
+        sc = bp * 0.05;
+        np = gp - pf - sc;
+       
+    }
+}
+class Associate extends Employee1{
+    Associate(){
+        designation="Associate professor";
+       
+    }
+    public void Associatesalary(){
+        da = bp * 1.30;
+        hra = bp * 0.30;
+        gp = bp + da + hra;
+        pf = bp * 0.12;
+        sc = bp * 0.10;
+        np = gp - pf - sc;
+       
+    }
+}
+class professor extends Employee1{
+    professor(){
+        designation="professor";
+       
+    }
+    public void professorsalary(){
+        da = bp * 1.40;
+        hra = bp * 0.40;
+        gp = bp + da + hra;
+        pf = bp * 0.12;
+        sc = bp * 0.15;
+        np = gp - pf - sc;
+       
+    }
+}
+public class Employee{
+        public static void main(String[]args){
+            int ch;
+            double bp;
+            Scanner in=new Scanner(System.in);
+            System.out.println("Enter basic pay:");
+            bp=in.nextDouble();
+            System.out.println("Select Designation");
+            System.out.println("1.Programmer");
+            System.out.println("2.Assistant professor");
+            System.out.println("3.Associate professor");
+            System.out.println("4.Professor");
+            System.out.println("Enter your choice:");
+            ch=in.nextInt();
+            switch(ch){
+                case 1:
+                    if(bp>=15000&&bp<=20000){
+                        programmer a=new programmer();
+                        a.bp=bp;
+                        a.input();
+                        a.programmersalary();
+                        a.display();
+                        break;
+                    }
+                case 2:
+                    if(bp>=20001&&bp<=30000){
+                        Assistant b=new Assistant();
+                        b.bp=bp;
+                        b.input();
+                        b.Assistantsalary();
+                        b.display();
+                        break;
+                    }
+                case 3:
+                    if(bp>=30001&&bp<=40000){
+                        Associate c=new Associate();
+                        c.bp=bp;
+                        c.input();
+                        c.Associatesalary();
+                        c.display();
+                        break;
+                    }
+                case 4:
+                    if(bp>=40000){
+                        professor d=new professor();
+                        d.bp=bp;
+                        d.input();
+                        d.professorsalary();
+                        d.display();
+                        break;
+                    }
+                default:
+                    System.out.println("Invalid Designation");
+            }
+        }
+}
+       
+           
+       
+       
+       
+   
+
+       
